@@ -10,24 +10,27 @@
 
     <body class="container">
 <h1 class="shadow" style="color: darkgreen;">Signup</h1>
-<form class="form-control">
+
+<form class="form-control" id="signup_form" >
 <label for="fname" class="border-black" >Name: </label>
-<input type="text" name="fname" id="fname" class="form-control" style="max-width: 500px;">
+<input type="text" name="fname" id="fname" class="form-control" style="max-width: 500px;" required>
 
 <label for="email" class="border-black" >Email: </label>
-<input type="email" name="email" id="email" class="form-control" style="max-width: 500px;">
+<input type="email" name="email" id="email" class="form-control" style="max-width: 500px;" required>
 
-<label for="phone" class="border-black" >Phone no: </label>
-<input type="tel" name="phone" id="phone" pattern="[0-9]{2}-[0-9]{10}" class="form-control" style="max-width: 500px;">
+<label for="phone" class="border-black" >Phone no<span style="color: grey;">(Format 99-9999999999)</span>: </label><div class="invalid-feedback">Phone number should in format 99-9999999999</div>
+<input type="tel" name="phone" id="phone" pattern="[0-9]{2}-[0-9]{10}" class="form-control" style="max-width: 500px;" required>
 
-<label for="pass" class="border-black" >Password: </label>
-<input type="password" name="pass" id="pass" class="form-control" style="max-width: 500px;">
 
-</form>
+<label for="pass1" class="border-black" >Password: </label>
+<input type="password" name="pass1" id="pass1" class="form-control" style="max-width: 500px;" required>
+
+<label for="pass2" class="border-black" >Password: </label><div class="invalid-feedback">Password entered in both boxes are not same</div>
+<input type="password" name="pass2" id="pass2" class="form-control" style="max-width: 500px;" required>
 <br>
-<button class="btn btn-success" style="min-width: 200px;">
-    Register
-</button>
-
+</form>
+<button id="submit" class="btn btn-success" style="min-width: 200px;max-width: 300px;" >
+Signup</button>
+<script src="signup.js"></script>
 </body>
 </html>
