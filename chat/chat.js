@@ -24,7 +24,7 @@ try{
       
    const result=await axios.get(baseURL+'msg',{headers:{Authorization:localStorage.getItem('token')}})
    for(let i=0;i<result.data.length;i++)
-   addmsg(result.data[i].userId,result.data[i].msg)
+   addmsg(result.data[i].user.name,result.data[i].msg)
 
 }catch(err){console.log(err)}
 }
