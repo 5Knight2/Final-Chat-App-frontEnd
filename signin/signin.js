@@ -6,9 +6,9 @@ function login(e){
     const obj={password:document.querySelector('#pass').value,
     email:document.querySelector('#email').value
 }
-    axios.post(baseURL,obj)
+    axios.post(baseURL+'signin',obj)
     .then((response)=>{
-        document.localstorage.setItem('token',response.data.token)
+        localStorage.setItem('token',response.data.token)
         alert("Login successful")
         location.href="http://127.0.0.1:5500/Signup.html";
     })

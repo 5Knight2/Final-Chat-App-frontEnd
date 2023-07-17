@@ -9,18 +9,21 @@
 
 </head>
 <body  >
-   <div class="container-fluid border-4 " style="max-width: 600px; border-color: black; background-color: rgb(225, 215, 233); min-height:100vh;">
+   <div id="div1" class="container-fluid border-4 " style="max-width: 600px; border-color: black; background-color: rgb(225, 215, 233); min-height:100vh;">
     
     <p  class="rounded-3" style="border: 1px;border-color: black;border-style:solid;">vijay: hiiiii</p>
     <p class="rounded-3" style="border: 1px;border-color: black;border-style:solid;"><span style="left:0px ">you: hiiiii iiiiiiiiiiiii asdasda     asdasdasd asd asd a sd asd a d ad a sd ad a sd ad as d ad ad a sd ad a da d asd a d </span></p>
      
     <form class="form-control" style="position: absolute;bottom: 10px;max-width:575px;">
         <div class="input-group">
-        <input type="text" class="form-control" style="max-width:500px; ">
-        <button  class="form-control "style="max-width:50px;" > ></button>
+        <input type="text" id="message" class="form-control" style="max-width:500px; ">
+        <button  id="send" class="form-control "style="max-width:50px;" > ></button>
         </div>
 
     </form>
     </div>
+    <script src="chat.js">        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+
 </body>
 </html>
