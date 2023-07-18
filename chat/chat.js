@@ -1,11 +1,18 @@
 const sendbtn=document.querySelector('#send');
 const baseURL="http://localhost:3000/";
 sendbtn.addEventListener("click",sendmsg);
-let lastmsg="";
-showall()
-
+let lastmsg=0;
+showfirst()
 const a=setInterval(() =>{ 
 showall()} , 1000)
+
+function showfirst(){
+   let msg= localStorage.getItem('msg')
+   if(msg){msg=JSON.parse(msg)
+   for(let i=0;i<msg.length;i++){
+    addmsg(msg[i].user.name,msg[i].msg)
+   }}
+}
 
 async function  sendmsg(e){
     e.preventDefault()
@@ -24,16 +31,23 @@ document.querySelector('#message').value=''
 async function showall(){
 
 try{
-      
-   const result=await axios.get(baseURL+'msg',{headers:{Authorization:localStorage.getItem('token')}})
-   if (lastmsg==result.data[result.data.length-1].createdAt)return
+      let msg=localStorage.getItem('msg');
+      if(msg){
+      msg=JSON.parse(msg);
+      lastmsg=msg[msg.length-1].id}
+      else msg=[];
+     if (!lastmsg)lastmsg=0;
+   const result=await axios.get(baseURL+'msg/'+lastmsg,{headers:{Authorization:localStorage.getItem('token')}})
+   if (lastmsg==result.data[result.data.length-1].id)return
+   
 
-lastmsg=result.data[result.data.length-1].createdAt;
+lastmsg=result.data[result.data.length-1].id;
 const div=document.querySelector('#div1')
-for(let i=0;i<div.childElementCount;i++)div.removeChild(div.firstElementChild)
-   for(let i=0;i<result.data.length;i++)
+   for(let i=0;i<result.data.length;i++){
    addmsg(result.data[i].user.name,result.data[i].msg)
-
+    msg.push(result.data[i]);
+}
+localStorage.setItem('msg',JSON.stringify(msg));
 }catch(err){console.log(err)}
 }
 
