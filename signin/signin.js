@@ -11,7 +11,7 @@ function login(e){
         localStorage.setItem('token',response.data.token)
         localStorage.setItem('name',response.data.name)
         alert("Login successful")
-        location.href="http://127.0.0.1:5500/Signup.html";
+        location.href="http://127.0.0.1:5500/chat/chat.html";
     })
     .catch(err=>{
         if(err.response.data.msg=="user not authorized")
